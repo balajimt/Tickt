@@ -1,0 +1,41 @@
+# Project: Tickt
+# Makefile created by Dev-C++ 5.1.1.0
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o graphic_gets.o render_seat.o date_time.o loading_new.o $(RES)
+LINKOBJ  = main.o graphic_gets.o render_seat.o date_time.o loading_new.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libgcc -static-libstdc++ -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32  
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+BIN      = Tickt.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS   = $(INCS)  
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Tickt.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Tickt.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+graphic_gets.o: graphic_gets.cpp
+	$(CPP) -c graphic_gets.cpp -o graphic_gets.o $(CXXFLAGS)
+
+render_seat.o: render_seat.cpp
+	$(CPP) -c render_seat.cpp -o render_seat.o $(CXXFLAGS)
+
+date_time.o: date_time.cpp
+	$(CPP) -c date_time.cpp -o date_time.o $(CXXFLAGS)
+
+loading_new.o: loading_new.cpp
+	$(CPP) -c loading_new.cpp -o loading_new.o $(CXXFLAGS)
